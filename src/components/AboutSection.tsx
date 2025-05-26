@@ -39,7 +39,7 @@ const AboutSection = () => {
                 became a mission: helping creators and businesses unlock AI's true potential.
               </p>
               <p>
-                From viral social media hooks to enterprise automation, I've crafted over 10,000 prompts 
+                From viral social media hooks to enterprise automation, I've crafted over 1lakh+ prompts 
                 that have generated millions in value for my clients.
               </p>
               <p>
@@ -72,18 +72,18 @@ const AboutSection = () => {
               {/* Main content area */}
               <div className="bg-gradient-to-br from-white to-ai-50 dark:from-slate-800 dark:to-slate-700 p-8 rounded-2xl shadow-xl border border-gray-200/50 dark:border-slate-600/50">
                 <div className="text-center">
-                  <div className="w-32 h-32 rounded-full mx-auto mb-6 overflow-hidden border-4 border-ai-300 shadow-lg">
+                  <div className="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-ai-300 shadow-lg">
                     <img 
                       src="/lovable-uploads/9515c58b-9fd2-45d1-a8b5-adabc1c47e3c.png" 
                       alt="Pathan Faizy" 
-                      className="w-full h-full object-cover object-center"
+                      className="w-full h-full object-cover object-top scale-110"
                     />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Pathan Faizy</h4>
                   <p className="text-ai-600 font-semibold mb-4">Senior Prompt Engineer</p>
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold text-gray-900 dark:text-white">10K+</div>
+                      <div className="text-2xl font-bold text-gray-900 dark:text-white">1lakh+</div>
                       <div className="text-sm text-gray-600 dark:text-gray-300">Prompts Created</div>
                     </div>
                     <div>
