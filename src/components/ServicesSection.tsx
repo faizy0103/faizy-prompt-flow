@@ -56,6 +56,10 @@ const ServicesSection = () => {
                   </li>
                   <li className="flex items-center">
                     <span className="w-2 h-2 bg-ai-500 rounded-full mr-3"></span>
+                    Custom prompts after depth analysis of your brand
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-ai-500 rounded-full mr-3"></span>
                     Delivery in 24 hours
                   </li>
                   <li className="flex items-center">
@@ -102,6 +106,10 @@ const ServicesSection = () => {
                   <li className="flex items-center">
                     <span className="w-2 h-2 bg-ai-500 rounded-full mr-3"></span>
                     50 fresh prompts daily
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-ai-500 rounded-full mr-3"></span>
+                    Custom prompts after depth analysis of your brand
                   </li>
                   <li className="flex items-center">
                     <span className="w-2 h-2 bg-ai-500 rounded-full mr-3"></span>

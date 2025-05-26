@@ -72,11 +72,11 @@ const AboutSection = () => {
               {/* Main content area */}
               <div className="bg-gradient-to-br from-white to-ai-50 dark:from-slate-800 dark:to-slate-700 p-8 rounded-2xl shadow-xl border border-gray-200/50 dark:border-slate-600/50">
                 <div className="text-center">
-                  <div className="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-ai-300 shadow-lg">
+                  <div className="w-48 h-48 rounded-full mx-auto mb-6 overflow-hidden border-4 border-ai-300 shadow-lg">
                     <img 
-                      src="/lovable-uploads/9515c58b-9fd2-45d1-a8b5-adabc1c47e3c.png" 
+                      src="/lovable-uploads/d699435b-d9a4-473d-a46e-f8035fd43e07.png" 
                       alt="Pathan Faizy" 
-                      className="w-full h-full object-cover object-top scale-110"
+                      className="w-full h-full object-cover object-center"
                     />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Pathan Faizy</h4>
