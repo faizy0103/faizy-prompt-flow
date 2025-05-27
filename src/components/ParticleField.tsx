@@ -7,25 +7,35 @@ const Particles = ({ mousePosition }: { mousePosition: { x: number; y: number } 
   const particlesRef = useRef<THREE.Points>(null);
   const particleCount = 500;
   
-  const { positions, velocities } = useMemo(() => {
+  const geometry = useMemo(() => {
     const positions = new Float32Array(particleCount * 3);
-    const velocities = new Float32Array(particleCount * 3);
     
     for (let i = 0; i < particleCount; i++) {
       positions[i * 3] = (Math.random() - 0.5) * 20;
       positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
-      
+    }
+    
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    
+    return geometry;
+  }, []);
+
+  const velocities = useMemo(() => {
+    const velocities = new Float32Array(particleCount * 3);
+    
+    for (let i = 0; i < particleCount; i++) {
       velocities[i * 3] = (Math.random() - 0.5) * 0.02;
       velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.02;
       velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.02;
     }
     
-    return { positions, velocities };
+    return velocities;
   }, []);
 
   useFrame(() => {
-    if (particlesRef.current) {
+    if (particlesRef.current && particlesRef.current.geometry) {
       const positionAttribute = particlesRef.current.geometry.attributes.position;
       const positions = positionAttribute.array as Float32Array;
       
@@ -48,15 +58,7 @@ const Particles = ({ mousePosition }: { mousePosition: { x: number; y: number } 
   });
 
   return (
-    <points ref={particlesRef}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          count={particleCount}
-          array={positions}
-          itemSize={3}
-        />
-      </bufferGeometry>
+    <points ref={particlesRef} geometry={geometry}>
       <pointsMaterial 
         size={0.05} 
         color="#7ccaff" 
