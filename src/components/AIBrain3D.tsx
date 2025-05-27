@@ -19,7 +19,6 @@ const RotatingBrain = () => {
       <Sphere ref={meshRef} args={[1.2, 64, 64]} position={[0, 0, 0]}>
         <MeshDistortMaterial
           color="#0c94ee"
-          attach="material"
           distort={0.4}
           speed={2}
           roughness={0.1}
