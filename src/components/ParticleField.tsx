@@ -1,5 +1,5 @@
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -7,22 +7,27 @@ const Particles = ({ mousePosition }: { mousePosition: { x: number; y: number } 
   const particlesRef = useRef<THREE.Points>(null);
   const particleCount = 500;
   
-  const positions = new Float32Array(particleCount * 3);
-  const velocities = new Float32Array(particleCount * 3);
-  
-  for (let i = 0; i < particleCount; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 20;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
+  const { positions, velocities } = useMemo(() => {
+    const positions = new Float32Array(particleCount * 3);
+    const velocities = new Float32Array(particleCount * 3);
     
-    velocities[i * 3] = (Math.random() - 0.5) * 0.02;
-    velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.02;
-    velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.02;
-  }
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 20;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
+      
+      velocities[i * 3] = (Math.random() - 0.5) * 0.02;
+      velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.02;
+      velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.02;
+    }
+    
+    return { positions, velocities };
+  }, []);
 
   useFrame(() => {
     if (particlesRef.current) {
-      const positions = particlesRef.current.geometry.attributes.position.array as Float32Array;
+      const positionAttribute = particlesRef.current.geometry.attributes.position;
+      const positions = positionAttribute.array as Float32Array;
       
       for (let i = 0; i < particleCount; i++) {
         // Add mouse influence
@@ -38,7 +43,7 @@ const Particles = ({ mousePosition }: { mousePosition: { x: number; y: number } 
         if (positions[i * 3 + 1] < -10) positions[i * 3 + 1] = 10;
       }
       
-      particlesRef.current.geometry.attributes.position.needsUpdate = true;
+      positionAttribute.needsUpdate = true;
     }
   });
 
@@ -52,7 +57,12 @@ const Particles = ({ mousePosition }: { mousePosition: { x: number; y: number } 
           itemSize={3}
         />
       </bufferGeometry>
-      <pointsMaterial size={0.05} color="#7ccaff" transparent opacity={0.6} />
+      <pointsMaterial 
+        size={0.05} 
+        color="#7ccaff" 
+        transparent 
+        opacity={0.6}
+      />
     </points>
   );
 };
